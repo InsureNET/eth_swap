@@ -83,12 +83,15 @@ class App extends Component {
       ethSwap: {},
       ethBalance: '0',
       tokenBalance: '0',
-      loading: true
+      loading: true,
+      metadata: {},
+      transactions: [],
     }
   }
 
   render() {
     let content
+    // Wait until the blockchain data has loaded.
     if(this.state.loading) {
       content = <p id="loader" className="text-center">Loading...</p>
     } else {
@@ -97,6 +100,7 @@ class App extends Component {
         tokenBalance={this.state.tokenBalance}
         buyTokens={this.buyTokens}
         sellTokens={this.sellTokens}
+        account={this.state.account}
       />
     }
 
@@ -105,17 +109,13 @@ class App extends Component {
         <Navbar account={this.state.account} />
         <div className="container-fluid mt-5">
           <div className="row">
-            <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '600px' }}>
+            <main 
+              role="main" 
+              className="col-lg-12 ml-auto mr-auto" 
+              style={{ maxWidth: '600px' }}
+            >
               <div className="content mr-auto ml-auto">
-                <a
-                  href="http://www.dappuniversity.com/bootcamp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                </a>
-
                 {content}
-
               </div>
             </main>
           </div>
