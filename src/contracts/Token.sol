@@ -3,7 +3,7 @@ pragma solidity ^0.5.16;
 contract Token {
     string  public name = "US Forestry Token";
     string  public symbol = "USF";
-    uint256 public totalSupply = 100000000000000000000000000; // 1 billion tokens
+    uint256 public totalSupply = 1000000000000000000000000000; // 1 billion tokens
     uint8   public decimals = 18;
 
     event Transfer(
