@@ -6,6 +6,7 @@ contract EthSwap {
   string public name = "EthSwap Instant Exchange";
   Token public token;
   uint public rate = 1000;
+  address private owner;
 
   event TokensPurchased(
     address account,
@@ -20,6 +21,15 @@ contract EthSwap {
     uint amount,
     uint rate
   );
+
+  /**
+   * @dev Throws if called by any account other than the owner.
+   */
+  modifier onlyOwner() {
+    require(msg.sender == owner, 'you must be the owner');
+    _;
+  }
+
 
   constructor (Token _token) public {
     token = _token;
@@ -43,7 +53,7 @@ contract EthSwap {
     emit TokensPurchased(msg.sender, address(token), tokenAmount, rate);
   }
 
-  function sellTokens(uint _amount) public {
+  function sellTokens(uint _amount) public onlyOwner {
     // User can't sell more tokens than they have
     require(token.balanceOf(msg.sender) >= _amount, '[ERROR]::NOT_ENOUGH_TO_SELL');
 
