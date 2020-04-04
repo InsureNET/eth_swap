@@ -1,7 +1,5 @@
 pragma solidity ^0.5.16;
 
-
-
 contract Token {
     string  public name = "US Forestry Token";
     string  public symbol = "USF";

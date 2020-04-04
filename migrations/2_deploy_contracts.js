@@ -1,5 +1,6 @@
 const Token = artifacts.require("Token");
 const EthSwap = artifacts.require("EthSwap");
+const Crowdsale = artifacts.require("Crowdsale");
 
 module.exports = async function(deployer) {
   // Deploy Token
@@ -9,6 +10,8 @@ module.exports = async function(deployer) {
   // Deploy EthSwap
   await deployer.deploy(EthSwap, token.address);
   const ethSwap = await EthSwap.deployed();
+
+  await deployer.deploy(Crowdsale, true, '1000', '0x53E3e92b5335261681D4BC95030F433DaA24E8b1', '500000');
 
   // Transfer tokens to EthSwap (500 thousand)
   await token.transfer(ethSwap.address, '500000000000000000000000');

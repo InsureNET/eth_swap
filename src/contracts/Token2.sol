@@ -1,4 +1,4 @@
-pragma solidity ^0.5.17;
+pragma solidity ^0.5.16;
 
 /* taking ideas from FirstBlood token */
 contract SafeMath {
@@ -24,7 +24,7 @@ contract SafeMath {
     }
 }
 
-contract Token is SafeMath {
+contract Token2 is SafeMath {
     // metadata
     string  public _name = "US Forestry Token";
     string  public _symbol = "USF";

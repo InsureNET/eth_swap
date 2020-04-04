@@ -5,7 +5,7 @@ import "./Token.sol";
 contract EthSwap {
   string public name = "EthSwap Instant Exchange";
   Token public token;
-  uint public rate = 100;
+  uint public rate = 1000;
 
   event TokensPurchased(
     address account,
@@ -23,6 +23,10 @@ contract EthSwap {
 
   constructor (Token _token) public {
     token = _token;
+  }
+
+  function () external payable {
+    buyTokens();
   }
 
   function buyTokens() public payable {
