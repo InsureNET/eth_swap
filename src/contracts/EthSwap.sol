@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.16;
 
 import "./Token.sol";
 
@@ -21,7 +21,7 @@ contract EthSwap {
     uint rate
   );
 
-  constructor(Token _token) public {
+  constructor (Token _token) public {
     token = _token;
   }
 
@@ -30,7 +30,7 @@ contract EthSwap {
     uint tokenAmount = msg.value * rate;
 
     // Require that EthSwap has enough tokens
-    require(token.balanceOf(address(this)) >= tokenAmount);
+    require(token.balanceOf(address(this)) >= tokenAmount, '[ERROR]::NEED_MORE_ETHER');
 
     // Transfer tokens to the user
     token.transfer(msg.sender, tokenAmount);
@@ -41,13 +41,13 @@ contract EthSwap {
 
   function sellTokens(uint _amount) public {
     // User can't sell more tokens than they have
-    require(token.balanceOf(msg.sender) >= _amount);
+    require(token.balanceOf(msg.sender) >= _amount, '[ERROR]::NOT_ENOUGH_TO_SELL');
 
     // Calculate the amount of Ether to redeem
     uint etherAmount = _amount / rate;
 
     // Require that EthSwap has enough Ether
-    require(address(this).balance >= etherAmount);
+    require(address(this).balance >= etherAmount, '[ERROR]::EXCHANGE_NEEDS_MORE_ETHER');
 
     // Perform sale
     token.transferFrom(msg.sender, address(this), _amount);
