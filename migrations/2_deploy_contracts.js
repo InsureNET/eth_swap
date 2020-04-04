@@ -10,8 +10,11 @@ module.exports = async function(deployer) {
   await deployer.deploy(EthSwap, token.address);
   const ethSwap = await EthSwap.deployed();
 
-  // Transfer all tokens to EthSwap (900 million)
-  await token.transfer(ethSwap.address, '900000000000000000000000000');
+  // Transfer tokens to EthSwap (500 thousand)
+  await token.transfer(ethSwap.address, '500000000000000000000000');
+
+  // Transfer the balance to a holding wallet
+  await token.transfer('0x0205a14FA5A31b7B596cF642F905028Bc0c22bc5', '899500000000000000000000000');
 
   // Transfer the dev shares
   await token.transfer('0x6F7d7d68c3Eed4Df81CF5F97582deef8ABC51533', '15000000000000000000000000');

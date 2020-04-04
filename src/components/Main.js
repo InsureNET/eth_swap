@@ -17,6 +17,7 @@ class Main extends Component {
         ethBalance={this.props.ethBalance}
         tokenBalance={this.props.tokenBalance}
         buyTokens={this.props.buyTokens}
+        exchangeRateDisplay={1000}
       />
     // } else {
       // content = <SellForm
