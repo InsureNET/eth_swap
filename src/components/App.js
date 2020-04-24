@@ -8,7 +8,7 @@ import './App.css'
 
 class App extends Component {
 
-  async componentWillMount() {
+  async UNSAFE_componentWillMount() {
     await this.loadWeb3()
     await this.loadBlockchainData()
   }
@@ -89,6 +89,8 @@ class App extends Component {
 
   render() {
     let content
+
+    // display after we get the data...
     if(this.state.loading) {
       content = <p id="loader" className="text-center">Loading...</p>
     } else {
@@ -107,11 +109,7 @@ class App extends Component {
           <div className="row">
             <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '600px' }}>
               <div className="content mr-auto ml-auto">
-               
-         
-
                 {content}
-
               </div>
             </main>
           </div>

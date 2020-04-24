@@ -3,6 +3,7 @@ require('babel-polyfill');
 const HDWalletProvider = require("truffle-hdwallet-provider");
 
 const mnemonic = 'despair arrive logic galaxy bottom field rabbit absurd snow proud dwarf blood';
+const ganachemnemonic = 'wild obtain logic town crazy royal wall gloom fit robust correct sweet';
 
 module.exports = {
   networks: {
